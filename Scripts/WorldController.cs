@@ -21,12 +21,12 @@ public class WorldController : MonoBehaviour {
 	}
 
 	private void LoadMain() {
-        GameObject main = Instantiate(mainMenuScene,mainMenuScene.transform.position,Quaternion.identity) as GameObject;
+        Instantiate(mainMenuScene,mainMenuScene.transform.position,Quaternion.identity);
 
 	}
 
 	private void LoadNote() {
-        GameObject note = Instantiate(noteScene, mainMenuScene.transform.position, Quaternion.identity) as GameObject;
+        Instantiate(noteScene, mainMenuScene.transform.position, Quaternion.identity);
 	}
 
     private void ClearScene() {

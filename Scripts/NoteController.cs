@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class NoteController : MonoBehaviour {
 
@@ -11,21 +12,36 @@ public class NoteController : MonoBehaviour {
         nCont = FindObjectOfType<NoteContainer>();
     }
 
-    private void GetDetails() {
+    //Finds and copies the note title and contents to local variables
+    private void GetDetails(){
         title = GameObject.Find("TitleField").GetComponent<InputField>().text;
-        print("Note title is: " + title);
         content = GameObject.Find("ContentField").GetComponent<InputField>().text;
-        print("Note content is: " + content);
     }
 
+    //Get title and content from note fields on canvas
+    //Search for matching title
+    //If a match is found, delete previous
     public void SaveNote() {
         GetDetails();
-        /*TODO: Get title and content from note fields on canvas
-         *      Search for matching title
-         *      If a match is found, delete previous
-         *      Create a new Note class
-         *      Save new note to NoteContainer
-        */
+        FindAndRemoveDuplicate();
+        CreateNoteInstance();
+    }
+
+	public void DeleteNoSave() {
+		GetDetails();
+		FindAndRemoveDuplicate();
+	}
+
+	private void FindAndRemoveDuplicate() {
+        Note duplicateNote = DuplicateTitleCheck();
+
+        if (duplicateNote != null) {
+            Debug.Log(duplicateNote.ToString());
+            DeleteNote(duplicateNote);
+        }
+        else {
+            Debug.Log("DeleteNote HAS NOT BEEN called!");
+        }
     }
 
     public void LoadNote() {
@@ -36,18 +52,34 @@ public class NoteController : MonoBehaviour {
         */
     }
 
-    public void DeleteNote() {
-        /*TODO: Get title from note field on canvas
-         *      Search for matching title to delete from NoteContainer
-         *      Delete matching note
-         *      If no matching title, do nothing
-        */
+    //Delete selected note from NoteContainer.noteList
+    //@param:   noteToDelete - the note to be deleted
+    public void DeleteNote(Note noteToDelete) {
+        Debug.Log("DeleteNote called!");
+        nCont.RemoveNote(noteToDelete);
     }
 
-    public bool NoteTitleSearch() {
-        /*TODO: Search for matching title from note field on canvas
-         *      Return true if found, else return false
-        */
-        return true;
+    //Search for matching title from note field on canvas
+    //Return true if found, else return false
+    public Note DuplicateTitleCheck() {
+        List<Note> notes = nCont.SendNoteList();
+        if(notes == null) {
+            return null;
+        }
+
+        foreach (Note duplicateNote in notes) {
+            if (duplicateNote.GetTitle() == title) {
+                Debug.Log("Duplicate found");
+                return duplicateNote;
+            }
+        }
+
+        Debug.Log("No duplicate found");
+        return null;
+    }
+
+    //Create new Note with currently selected Title and Content
+    private void CreateNoteInstance() {
+        nCont.AddNote(new Note(title, content));
     }
 }
