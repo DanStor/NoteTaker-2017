@@ -5,7 +5,8 @@ public class DeleteNote : MonoBehaviour {
 
     private NoteController nCtrl; 
 
-    void Awake() {
+    void Awake()
+	{
         nCtrl = FindObjectOfType<NoteController>();
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(ButtonPressed);

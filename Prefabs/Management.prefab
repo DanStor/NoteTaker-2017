@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da5c917032a49c29b1ac261351d234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuScene: {fileID: 1106110924261806, guid: 69f6af96f1dd442db8c1be5388e73046,
+  mainMenuScene: {fileID: 1736961695512362, guid: 69f6af96f1dd442db8c1be5388e73046,
     type: 2}
   noteScene: {fileID: 1122706184892602, guid: 1c9cf4cf6e2f54a5c8a760b69161c718, type: 2}
 --- !u!114 &114676007683448288

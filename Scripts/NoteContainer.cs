@@ -10,23 +10,26 @@ public class NoteContainer : MonoBehaviour {
     }
 
     public void AddNote(Note note) {
-        noteList.Add(note);
-        print(noteList.Count.ToString());
-        Debug.Log("Note added to noteList");
+		noteList.Add(note);
+		print(noteList.Count.ToString());
+		Debug.Log("Note added to noteList");
+		DebugCheckItemsInList();
+	}
 
-        int i = 1;
-        foreach (Note noteInList in noteList)
-        {
-            Debug.Log("Note number: " + i + " title: " + noteInList.GetTitle() + " content: " + noteInList.GetContent());
-            i++;
-        }
-    }
+	private void DebugCheckItemsInList() {
+		int i = 1;
+		foreach (Note noteInList in noteList) {
+			Debug.Log("Note number: " + i + " title: " + noteInList.GetTitle() + " content: " + noteInList.GetContent());
+			i++;
+		}
+	}
 
-    public List<Note> SendNoteList() {
+	public List<Note> SendNoteList() {
         return noteList;
     }
 
-    public void RemoveNote(Note noteToRemove) {
-        noteList.Remove(noteToRemove);
-    }
+	public void RemoveNote(Note noteToRemove) {
+		noteList.Remove(noteToRemove);
+		DebugCheckItemsInList();
+	}
 }

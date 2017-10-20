@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NewNoteButton : MonoBehaviour {
 
-    public string note;
+	public string scene;
     private WorldController wc;
 
 	void Awake () {
@@ -13,6 +13,6 @@ public class NewNoteButton : MonoBehaviour {
 	}
 
     private void ButtonPressed() {
-        wc.SetScene(note);
+        wc.SetScene(scene);
     }
 }

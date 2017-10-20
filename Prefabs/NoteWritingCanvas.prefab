@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 114822650799052388}
   - component: {fileID: 114596292436544178}
   - component: {fileID: 114964976054471182}
+  - component: {fileID: 114859166152986908}
   m_Layer: 5
   m_Name: DeleteNoteButton
   m_TagString: Untagged
@@ -567,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ff32055b35d4112a9c497793884ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  note: mn
+  scene: mn
 --- !u!114 &114596212407244528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -807,6 +808,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114859166152986908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605300356214590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38ea6d6301b3413bbd2883e8914f405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114901904044060234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ff32055b35d4112a9c497793884ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  note: mn
+  scene: mn
 --- !u!222 &222023426909348380
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -63,9 +63,9 @@ public class NoteController : MonoBehaviour {
     //Return true if found, else return false
     public Note DuplicateTitleCheck() {
         List<Note> notes = nCont.SendNoteList();
-        if(notes == null) {
-            return null;
-        }
+        //if(notes == null) {
+        //    return null;
+        //}
 
         foreach (Note duplicateNote in notes) {
             if (duplicateNote.GetTitle() == title) {
