@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class NoteContainer : MonoBehaviour {
 
     private List<Note> noteList;
@@ -11,7 +12,7 @@ public class NoteContainer : MonoBehaviour {
 
     public void AddNote(Note note) {
 		noteList.Add(note);
-		print(noteList.Count.ToString());
+        Debug.Log(noteList.Count.ToString());
 		Debug.Log("Note added to noteList");
 		DebugCheckItemsInList();
 	}
@@ -19,7 +20,7 @@ public class NoteContainer : MonoBehaviour {
 	private void DebugCheckItemsInList() {
 		int i = 1;
 		foreach (Note noteInList in noteList) {
-			Debug.Log("Note number: " + i + " title: " + noteInList.GetTitle() + " content: " + noteInList.GetContent());
+			Debug.Log("Note number: " + i + ". Title: " + noteInList.GetTitle() + ". Content: " + noteInList.GetContent());
 			i++;
 		}
 	}

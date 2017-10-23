@@ -5,20 +5,25 @@ public class WorldController : MonoBehaviour {
     public GameObject mainMenuScene;
     public GameObject noteScene;
 
+    private TitleTextController ttc;
+    private ContentTextController ctc;
+
     private void Start() {
         LoadMain();
     }
 
     public void SetScene (string scene) {
         ClearScene();
-
-		if (scene == "mn")
-			LoadMain ();
-		else if (scene == "nt")
-			LoadNote ();
-		else
-			Debug.LogError ("Invalid scene string", gameObject);
+        LoadScene(scene);
 	}
+
+    public void SetScene (string scene, Note noteToLoad) {
+        ClearScene();
+        LoadScene(scene);
+        ttc = FindObjectOfType<TitleTextController>();
+        ctc = FindObjectOfType<ContentTextController>();
+        FillForms(noteToLoad);
+    }
 
 	private void LoadMain() {
         Instantiate(mainMenuScene,mainMenuScene.transform.position,Quaternion.identity);
@@ -33,5 +38,19 @@ public class WorldController : MonoBehaviour {
         foreach (Transform obj in FindObjectOfType<Canvas>().GetComponentsInChildren<Transform>()) {
             Destroy(obj.gameObject);
         }
+    }
+
+    private void LoadScene(string s) {
+        if (s == "mn")
+            LoadMain();
+        else if (s == "nt")
+            LoadNote();
+        else
+            Debug.LogError("Invalid scene string", gameObject);
+    }
+
+    private void FillForms(Note noteToLoad) {
+        ttc.FillForm(noteToLoad.GetTitle());
+        ctc.FillForm(noteToLoad.GetContent());
     }
 }
